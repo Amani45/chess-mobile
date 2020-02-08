@@ -1,0 +1,26 @@
+<div class="title">Choose your chess men and thier quantity</div>
+
+<div class="selection">
+
+    <div class="piece">
+        <div>Queen</div>
+        <div class="piece-icon" [innerHTML]="pieces['queen']"></div>
+        <input type="number" [(ngModel)]="queen">
+    </div>
+    <div class="piece">
+        <div>Bishop</div>
+        <div class="piece-icon" [innerHTML]="pieces['bishop']"></div>
+        <input type="number" [(ngModel)]="bishop">
+    </div>
+    <div class="piece">
+        <div>Knight</div>
+        <div class="piece-icon" [innerHTML]="pieces['knight']"></div>
+        <input type="number" [(ngModel)]="knight">
+    </div>
+    <div class="piece">
+        <div>Rook</div>
+        <div class="piece-icon" [innerHTML]="pieces['rook']"></div>
+        <input type="number" [(ngModel)]="rook">
+    </div>
+</div>
+<button (click)="onAction()">Next</button>
