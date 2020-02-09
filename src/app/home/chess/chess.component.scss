@@ -69,3 +69,26 @@
         animation: background-color 3.5s ease-in-out infinite alternate;
     }
 }
+
+
+
+// home page
+
+.logo {
+    display: flex;
+    justify-content: center;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    .button {
+        background-color: #ececec;
+width: 100px;
+height: 50px;
+border-radius: 3px;
+margin: 5px;
+    }
+}

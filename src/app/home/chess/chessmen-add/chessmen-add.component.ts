@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Pieces, Mode } from '../chess.component';
 
 @Component({
@@ -10,6 +10,7 @@ export class ChessmenAddComponent implements OnInit {
 
   @Input() selectedChessMen = []
   @Input() mode = Mode.FOUR
+  @Output() chessmenAdded = new EventEmitter()
 
 
   public pieces = Pieces
@@ -27,12 +28,12 @@ export class ChessmenAddComponent implements OnInit {
 
   ngOnInit() {
     this.boardState = Array(this.mode).fill('Row').map(x => Array(this.mode).fill({ value: '', selected: false }))
-
   }
 
 
-  onAction(){
-    console.log("Done", this.currentSelected)
+  onDone(){
+    // console.log("Done", this.currentSelected)
+    this.chessmenAdded.emit(this.currentSelected)
   }
 
 

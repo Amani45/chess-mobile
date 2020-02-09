@@ -11,16 +11,20 @@ export class ChessComponent implements OnInit {
 
   @Input() public mode = Mode.FOUR
   action = 'singup'
-  view = 'signup_chessMenSelect'
+  view = 'home'
   public pieces = Pieces
 
   public selectedChessMen = []
+  public userInfo= null
 
   boardState = null
 
   actions = {
-    signup_chessMenSelect: ['next'],
-    signup_chessMenAddToBoard: ['done']
+    home : 0,
+    signup_info : 1,
+    signup_chessMenSelect: 2,
+    signup_chessMenAddToBoard: 3,
+    login_info: 4 
   }
 
   
@@ -28,15 +32,23 @@ export class ChessComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
-    this.boardState = Array(4).fill('Row').map(x => Array(4).fill({ value: '', selected: false }))
+    // this.boardState = Array(4).fill('Row').map(x => Array(4).fill({ value: '', selected: false }))
   }
 
 
   // events // taken
   onChessmenSelected($event){
     this.selectedChessMen = $event
-    this.onAction('next')
+    this.onAction('signup_chessMenAddToBoard')
+  }
+
+  onChessmenAdded($event){
+    this.onAction('home')
+  }
+
+  onUserInfo($event){
+    this.userInfo = $event
+    this.onAction('signup_chessMenSelect')
   }
 
   // might be moved to service 
@@ -45,12 +57,27 @@ export class ChessComponent implements OnInit {
   onAction(action){
     switch(action){
 
-      case 'next': {
+      case 'signup': {
+        this.view = 'signup_info'
+        break;
+      }
+      case 'signup': {
+        this.view = 'signup_info'
+        break;
+      }
+
+      case 'signup_chessMenSelect': {
+        this.view = 'signup_chessMenSelect'
+        break;
+      }
+
+      case 'signup_chessMenAddToBoard': {
         this.view = 'signup_chessMenAddToBoard'
         break;
       }
 
-      case 'done': {
+      
+      default: {
         this.view = 'home'
         break;
       }
@@ -63,8 +90,10 @@ export class ChessComponent implements OnInit {
 
   // services for sign up
 
+  // taken
   selectedChessMenIndex = 1000
 
+  // tkane
   onChessMenIndexSelect(index) {
     if (this.selectedChessMenIndex != index) {
       this.selectedChessMenIndex = index
@@ -86,6 +115,7 @@ export class ChessComponent implements OnInit {
     console.log(this.currentSelected)
   }
 
+  /// taken
   onPieceAdd(i, j) {
 
     if(this.selectedChessMenIndex == 1000){

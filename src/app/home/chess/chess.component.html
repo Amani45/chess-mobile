@@ -1,70 +1,28 @@
-
 <div [ngSwitch]="action">
     <div *ngSwitchCase="'singup'">
         <div [ngSwitch]="view" class="container">
-            
+
             <ng-container *ngSwitchCase="'signup_chessMenSelect'">
                 <app-chessmen-select (chessmenSelected)="onChessmenSelected($event)"></app-chessmen-select>
             </ng-container>
-        
+
             <ng-container *ngSwitchCase="'signup_chessMenAddToBoard'">
-                <app-chessmen-add [selectedChessMen]="selectedChessMen"></app-chessmen-add>
-        
-                <!-- <div class="selected-chess-men">
-                    <div *ngFor="let piece of selectedChessMen; let i = index" class="piece" (click)="onChessMenIndexSelect(i)"
-                        [ngClass]="{selected: selectedChessMenIndex == i}">
-                        <span [innerHTML]="pieces[piece]"></span>
-                    </div>
-                </div>
-        
-                <div [ngSwitch]="mode" class="board">
-                    <ng-container *ngSwitchCase="4">
-                        <ng-container *ngFor="let row of boardState; let i = index">
-                            <div class="row" id="{{i}}">
-                                <ng-container *ngFor="let col of boardState[i]; let j = index">
-                                    <div class="cell" [innerHTML]="pieces[col.value]"
-                                        (click)="onPieceSelect(i,j);onPieceAdd(i,j)">
-                                    </div>
-                                </ng-container>
-                            </div>
-                        </ng-container>
-                    </ng-container>
-                    <div *ngSwitchDefault>8x8</div>
-                </div>
-
-                <button (click)="onAction('done')">Done</button> -->
-
-        
+                <app-chessmen-add (chessmenAdded)="onChessmenAdded($event)" [selectedChessMen]="selectedChessMen"></app-chessmen-add>
             </ng-container>
-        
-            <ng-container *ngSwitchDefault>home</ng-container>
-        
-        
-        
-        
-        
-        
-        
-        
-            <!-- board -->
-        
-            <!-- <div [ngSwitch]="mode" class="board">
-                <ng-container *ngSwitchCase="4">
-                    <ng-container  *ngFor="let row of boardState; let i = index">
-                        <div class="row" id="{{i}}">
-                            <ng-container *ngFor="let col of boardState[i]; let j = index">
-                                <div class="cell" [innerHTML]="pieces[col.value]" (click)="onPieceSelect(i,j);onPieceAdd(i,j)" >
-                                </div>
-                            </ng-container>
-                        </div>
-                    </ng-container>
-                </ng-container>
-                <div *ngSwitchDefault>8x8</div>
-            </div> -->
-        
-        
-            <!-- Actions  -->
-        
+
+            <ng-container *ngSwitchCase="'signup_info'">
+                <app-signup-info (userInfo)="onUserInfo($event)"></app-signup-info>
+            </ng-container>
+
+            <ng-container *ngSwitchDefault>
+                <div class="logo">
+                    <img src="assets/logo.png">
+                </div>
+                <div class="actions">
+                    <button class="button">Login</button>
+                    <button class="button" (click)="onAction('signup')">Sign Up</button>
+                </div>
+            </ng-container>
         </div>
     </div>
     <div *ngSwitchDefault>SING IN</div>
