@@ -8,8 +8,9 @@
             </ng-container>
         
             <ng-container *ngSwitchCase="'signup_chessMenAddToBoard'">
+                <app-chessmen-add [selectedChessMen]="selectedChessMen"></app-chessmen-add>
         
-                <div class="selected-chess-men">
+                <!-- <div class="selected-chess-men">
                     <div *ngFor="let piece of selectedChessMen; let i = index" class="piece" (click)="onChessMenIndexSelect(i)"
                         [ngClass]="{selected: selectedChessMenIndex == i}">
                         <span [innerHTML]="pieces[piece]"></span>
@@ -31,7 +32,7 @@
                     <div *ngSwitchDefault>8x8</div>
                 </div>
 
-                <button (click)="onAction('done')">Done</button>
+                <button (click)="onAction('done')">Done</button> -->
 
         
             </ng-container>

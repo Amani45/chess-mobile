@@ -1,0 +1,29 @@
+<div class="title">Add your chessmen to the board</div>
+
+
+
+<div class="selected-chess-men">
+  <div *ngFor="let piece of selectedChessMen; let i = index" class="piece" (click)="onChessMenIndexSelect(i)"
+      [ngClass]="{selected: selectedChessMenIndex == i}">
+      <span [innerHTML]="pieces[piece]"></span>
+  </div>
+</div>
+
+<div  class="board">
+  <!-- <ng-container *ngSwitchCase="4"> -->
+      <ng-container *ngFor="let row of boardState; let i = index">
+          <div class="row" id="{{i}}">
+              <ng-container *ngFor="let col of boardState[i]; let j = index">
+                  <div class="cell" [innerHTML]="pieces[col.value]" (click)="onPieceAdd(i,j)">
+                  </div>
+              </ng-container>
+          </div>
+      <!-- </ng-container> -->
+  </ng-container>
+  <!-- <div *ngSwitchDefault>8x8</div> -->
+</div>
+
+<!-- <button (click)="onAction('done')">Done</button> -->
+<div class="actions">
+  <button class="button" (click)="onAction()">Done</button>
+</div>

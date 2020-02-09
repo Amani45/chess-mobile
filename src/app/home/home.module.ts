@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { HomePage } from './home.page';
 import { ChessmenSelectComponent } from './chess/chessmen-select/chessmen-select.component';
 import { ChessComponent } from './chess/chess.component';
+import { ChessmenAddComponent } from './chess/chessmen-add/chessmen-add.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,6 @@ import { ChessComponent } from './chess/chess.component';
       }
     ])
   ],
-  declarations: [HomePage, ChessComponent,ChessmenSelectComponent]
+  declarations: [HomePage, ChessComponent,ChessmenSelectComponent, ChessmenAddComponent]
 })
 export class HomePageModule {}

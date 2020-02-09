@@ -19,6 +19,7 @@ export class ChessmenSelectComponent implements OnInit {
   chessmen = []
   @Output() chessmenSelected = new EventEmitter()
 
+
   constructor() { }
 
   ngOnInit() {

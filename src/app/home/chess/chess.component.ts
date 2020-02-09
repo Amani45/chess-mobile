@@ -23,6 +23,7 @@ export class ChessComponent implements OnInit {
     signup_chessMenAddToBoard: ['done']
   }
 
+  
 
   constructor() { }
 
@@ -32,7 +33,7 @@ export class ChessComponent implements OnInit {
   }
 
 
-  // events
+  // events // taken
   onChessmenSelected($event){
     this.selectedChessMen = $event
     this.onAction('next')
@@ -40,7 +41,7 @@ export class ChessComponent implements OnInit {
 
   // might be moved to service 
 
-
+// taken
   onAction(action){
     switch(action){
 
@@ -77,7 +78,7 @@ export class ChessComponent implements OnInit {
 
 
 
-  // services for board
+  // services for board // both taken
 
   currentSelected = []
   onPieceSelect(i, j) {

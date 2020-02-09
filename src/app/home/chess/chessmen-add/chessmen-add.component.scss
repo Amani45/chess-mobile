@@ -11,6 +11,12 @@
     align-items: center;
     justify-content: center;
 
+width: 100%;
+flex-wrap: wrap;
+display: flex;
+align-items: center;
+
+
     .piece {
         border: 1px solid #fff;
         display: flex;
@@ -44,6 +50,17 @@
     flex:1;
 }
 
+.title {
+    width: 100%;
+    text-align: left;
+    font-size: large;
+    font-weight: 600;
+    padding-bottom: 40px;
+    display: flex;
+justify-content: center;
+align-items: center;
+}
+
 .cell {
     // width: 100px;
     // height: 100px;
@@ -67,5 +84,19 @@
         cursor: pointer;
         // transform: translate(5px, 0px);
         animation: background-color 3.5s ease-in-out infinite alternate;
+    }
+}
+
+
+.actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    .button {
+        background-color: #ececec;
+width: 100px;
+height: 50px;
+border-radius: 3px;
     }
 }
