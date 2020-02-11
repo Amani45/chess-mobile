@@ -11,11 +11,20 @@ export class ChessComponent implements OnInit {
 
   @Input() public mode = Mode.FOUR
   action = 'singup'
-  view = 'signup_chessMenSelect'
+  view = 'home'
   public pieces = Pieces
 
-  public selectedChessMen = []
+  public selectedChessmen = []
   public userInfo= null
+
+  //
+  public singup = {
+    userName : 'XXXXX',
+    phone: 'XXXXXXX',
+    chessSize: 4,
+    chessCode : []
+  }
+
 
   boardState = null
 
@@ -38,16 +47,20 @@ export class ChessComponent implements OnInit {
 
   // events // taken
   onChessmenSelected($event){
-    this.selectedChessMen = $event
+    this.selectedChessmen = $event
     this.onAction('signup_chessMenAddToBoard')
   }
 
   onChessmenAdded($event){
+    this.singup.chessCode = $event
     this.onAction('home')
+
   }
 
   onUserInfo($event){
-    this.userInfo = $event
+    console.log("USER_INFO: ", $event)
+    this.singup.userName = $event.userName
+    this.singup.phone = $event.phone
     this.onAction('signup_chessMenSelect')
   }
 
@@ -109,25 +122,25 @@ export class ChessComponent implements OnInit {
 
   // services for board // both taken
 
-  currentSelected = []
-  onPieceSelect(i, j) {
-    this.currentSelected.push([i, j])
-    console.log(this.currentSelected)
-  }
+  // currentSelected = []
+  // onPieceSelect(i, j) {
+  //   this.currentSelected.push([i, j])
+  //   console.log(this.currentSelected)
+  // }
 
   /// taken
-  onPieceAdd(i, j) {
+  // onPieceAdd(i, j) {
 
-    if(this.selectedChessMenIndex == 1000){
-      this.boardState[i][j] = { value: this.currentSelected[0], selected: false }
+  //   if(this.selectedChessMenIndex == 1000){
+  //     this.boardState[i][j] = { value: this.currentSelected[0], selected: false }
 
-    }else {
-      this.boardState[i][j] = { value: this.selectedChessMen[this.selectedChessMenIndex], selected: false }
-      this.selectedChessMen= this.selectedChessMen.filter((_,index)=> index != this.selectedChessMenIndex)
-      this.selectedChessMenIndex = 1000
-    }
+  //   }else {
+  //     this.boardState[i][j] = { value: this.selectedChessMen[this.selectedChessMenIndex], selected: false }
+  //     this.selectedChessMen= this.selectedChessMen.filter((_,index)=> index != this.selectedChessMenIndex)
+  //     this.selectedChessMenIndex = 1000
+  //   }
 
-  }
+  // }
 
 }
 

@@ -13,10 +13,11 @@
   <!-- <ng-container *ngSwitchCase="4"> -->
       <ng-container *ngFor="let row of boardState; let i = index">
           <div class="row" id="{{i}}">
-              <ng-container *ngFor="let col of boardState[i]; let j = index">
-                  <div class="cell" [innerHTML]="pieces[col.value]" (click)="onPieceAdd(i,j)">
+              <div class="cell" *ngFor="let col of boardState[i]; let j = index" (click)="onPieceAdd(i,j)">
+                  <div  [innerHTML]="pieces[col.value]">
                   </div>
-              </ng-container>
+                  <span class="order"> {{col.order}}</span>
+                </div>
           </div>
       <!-- </ng-container> -->
   </ng-container>

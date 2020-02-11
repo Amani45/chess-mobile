@@ -7,7 +7,7 @@
             </ng-container>
 
             <ng-container *ngSwitchCase="'signup_chessMenAddToBoard'">
-                <app-chessmen-add (chessmenAdded)="onChessmenAdded($event)" [selectedChessMen]="selectedChessMen"></app-chessmen-add>
+                <app-chessmen-add (chessmenAdded)="onChessmenAdded($event)" [selectedChessMen]="selectedChessmen"></app-chessmen-add>
             </ng-container>
 
             <ng-container *ngSwitchCase="'signup_info'">
@@ -22,6 +22,9 @@
                     <button class="button">Login</button>
                     <button class="button" (click)="onAction('signup')">Sign Up</button>
                 </div>
+                
+                OUTPUT: <br>
+                {{singup | json}}
             </ng-container>
         </div>
     </div>

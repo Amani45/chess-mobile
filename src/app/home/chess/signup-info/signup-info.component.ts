@@ -25,8 +25,7 @@ export class SignupInfoComponent implements OnInit {
     if(this.userName.length == 0 || this.phone.length == 0){
         alert("Please enter username and phone")
     }else {
-      console.log("Username : ", this.userName, this.phone)
-      this.userInfo.emit({userName: this.userInfo, phone: this.phone})
+      this.userInfo.emit({userName: this.userName, phone: this.phone})
     }
   }
 

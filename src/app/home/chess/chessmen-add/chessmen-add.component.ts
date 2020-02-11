@@ -41,7 +41,6 @@ export class ChessmenAddComponent implements OnInit {
 
 
   onDone(){
-    // console.log("Done", this.currentSelected)
     this.chessmenAdded.emit(this.currentSelected)
   }
 
@@ -63,8 +62,8 @@ export class ChessmenAddComponent implements OnInit {
     if (this.selectedChessMenIndex == this.largeValue) {
        this.boardState[i][j] = { value: this.currentSelected[0], selected: false }
     } else {
-      this.boardState[i][j] = { value: this.selectedChessMen[this.selectedChessMenIndex], selected: false }
-      this.currentSelected.push({x:i,y:j,chessman : this.selectedChessMen[this.selectedChessMenIndex], order : (this.initSelectedChessmen.length - this.selectedChessMen.length )})
+      this.boardState[i][j] = { value: this.selectedChessMen[this.selectedChessMenIndex], selected: false, order :  (this.initSelectedChessmen.length - this.selectedChessMen.length )+1 }
+      this.currentSelected.push({x:i,y:j,chessman : this.selectedChessMen[this.selectedChessMenIndex], order : (this.initSelectedChessmen.length - this.selectedChessMen.length )+1})
       this.selectedChessMen = this.selectedChessMen.filter((_, index) => index != this.selectedChessMenIndex)
       this.selectedChessMenIndex = this.largeValue
     }
