@@ -11,7 +11,7 @@ export class ChessComponent implements OnInit {
 
   @Input() public mode = Mode.FOUR
   action = 'singup'
-  view = 'home'
+  view = 'signup_chessMenSelect'
   public pieces = Pieces
 
   public selectedChessMen = []

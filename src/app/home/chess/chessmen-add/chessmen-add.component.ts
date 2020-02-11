@@ -12,6 +12,8 @@ export class ChessmenAddComponent implements OnInit {
   @Input() mode = Mode.FOUR
   @Output() chessmenAdded = new EventEmitter()
 
+  initSelectedChessmen = []
+
 
   public pieces = Pieces
 
@@ -28,6 +30,13 @@ export class ChessmenAddComponent implements OnInit {
 
   ngOnInit() {
     this.boardState = Array(this.mode).fill('Row').map(x => Array(this.mode).fill({ value: '', selected: false }))
+    this.initSelectedChessmen = this.selectedChessMen
+  }
+
+
+  onReset(){
+ this.selectedChessMen = this.initSelectedChessmen
+ this.boardState = Array(this.mode).fill('Row').map(x => Array(this.mode).fill({ value: '', selected: false }))
   }
 
 
@@ -47,7 +56,6 @@ export class ChessmenAddComponent implements OnInit {
 
   onPieceSelect(i, j, type) {
     alert("hello")
-    // this.currentSelected.push({x: i, y: j})
   }
 
   onPieceAdd(i, j) {
@@ -56,7 +64,7 @@ export class ChessmenAddComponent implements OnInit {
        this.boardState[i][j] = { value: this.currentSelected[0], selected: false }
     } else {
       this.boardState[i][j] = { value: this.selectedChessMen[this.selectedChessMenIndex], selected: false }
-      this.currentSelected.push({x:i,y:j,chessman : this.selectedChessMen[this.selectedChessMenIndex]})
+      this.currentSelected.push({x:i,y:j,chessman : this.selectedChessMen[this.selectedChessMenIndex], order : (this.initSelectedChessmen.length - this.selectedChessMen.length )})
       this.selectedChessMen = this.selectedChessMen.filter((_, index) => index != this.selectedChessMenIndex)
       this.selectedChessMenIndex = this.largeValue
     }
