@@ -11,6 +11,7 @@ import { ChessmenAddComponent } from './chess/chessmen-add/chessmen-add.componen
 import { SignupInfoComponent } from './chess/signup-info/signup-info.component';
 import { ChessService } from './chess/services/chess.service';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginUserInfoComponent } from './chess/login-user-info/login-user-info.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
       }
     ])
   ],
-  declarations: [HomePage, ChessComponent,ChessmenSelectComponent, ChessmenAddComponent,SignupInfoComponent],
+  declarations: [HomePage, ChessComponent,ChessmenSelectComponent, ChessmenAddComponent,SignupInfoComponent, LoginUserInfoComponent],
   providers : [ChessService]
 })
 export class HomePageModule {}

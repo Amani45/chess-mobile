@@ -20,6 +20,8 @@ export class ChessService {
 
 
   SINGUP_NEW_USER = environment.url + "/users/signup"
+  GET_USER_CHESSMEN = environment.url + "/users/get"
+
 
 
 
@@ -35,6 +37,12 @@ export class ChessService {
     // );
 
   }
+
+  public getUserChessmen(userName): Observable<any>{
+    return this.http.get(this.GET_USER_CHESSMEN +"/"+ userName)
+  }
+
+  
 
   public ping(){
     return this.http.get(environment.url + "/ping").pipe(map(( res : any) => {

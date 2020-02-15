@@ -73,6 +73,20 @@ export class ChessComponent implements OnInit {
     this.onAction('signup_chessMenSelect')
   }
 
+  onLoginUserInfo($event){
+    this.progress = true
+    this.chessService.getUserChessmen($event.userName).subscribe( (res : any) => {
+      this.progress = false
+      if(res.success){
+        console.log("chessmen of user : ", res.body)
+        // this.onAction('home')
+      }else {
+        alert("user name is not found.")
+      }
+    })
+    
+  }
+
   // might be moved to service 
 
 // taken
@@ -83,8 +97,8 @@ export class ChessComponent implements OnInit {
         this.view = 'signup_info'
         break;
       }
-      case 'signup': {
-        this.view = 'signup_info'
+      case 'login': {
+        this.view = 'login_info'
         break;
       }
 
