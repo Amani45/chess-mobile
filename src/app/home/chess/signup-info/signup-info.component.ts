@@ -9,7 +9,7 @@ export class SignupInfoComponent implements OnInit {
 
 
   userName = ""
-  phone = ""
+  phone = "+9665"
 
   @Output() userInfo = new EventEmitter()
 

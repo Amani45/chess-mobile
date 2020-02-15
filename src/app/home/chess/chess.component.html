@@ -1,6 +1,8 @@
 <div [ngSwitch]="action">
     <div *ngSwitchCase="'singup'">
         <div [ngSwitch]="view" class="container">
+            <ion-spinner class="progress" *ngIf="progress" name="circles"></ion-spinner>
+
 
             <ng-container *ngSwitchCase="'signup_chessMenSelect'">
                 <app-chessmen-select (chessmenSelected)="onChessmenSelected($event)"></app-chessmen-select>

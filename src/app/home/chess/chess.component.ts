@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgSwitch } from '@angular/common';
+import { ChessService } from './services/chess.service';
 
 @Component({
   selector: 'app-chess',
@@ -13,6 +14,7 @@ export class ChessComponent implements OnInit {
   action = 'singup'
   view = 'home'
   public pieces = Pieces
+  public progress = false
 
   public selectedChessmen = []
   public userInfo= null
@@ -38,11 +40,9 @@ export class ChessComponent implements OnInit {
 
   
 
-  constructor() { }
+  constructor(public chessService : ChessService) { }
 
-  ngOnInit() {
-    // this.boardState = Array(4).fill('Row').map(x => Array(4).fill({ value: '', selected: false }))
-  }
+  ngOnInit() {}
 
 
   // events // taken
@@ -53,8 +53,17 @@ export class ChessComponent implements OnInit {
 
   onChessmenAdded($event){
     this.singup.chessCode = $event
-    this.onAction('home')
-
+    this.progress = true
+    this.chessService.signupNewUser(this.singup).subscribe( (res : any) => {
+      console.log(res)
+      this.progress = false
+      console.log(res)
+      if(res.success){
+        this.onAction('home')
+      }else {
+        alert("Signup failed.")
+      }
+    })
   }
 
   onUserInfo($event){

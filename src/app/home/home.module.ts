@@ -9,12 +9,15 @@ import { ChessmenSelectComponent } from './chess/chessmen-select/chessmen-select
 import { ChessComponent } from './chess/chess.component';
 import { ChessmenAddComponent } from './chess/chessmen-add/chessmen-add.component';
 import { SignupInfoComponent } from './chess/signup-info/signup-info.component';
+import { ChessService } from './chess/services/chess.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    HttpClientModule,
     RouterModule.forChild([
       {
         path: '',
@@ -22,6 +25,7 @@ import { SignupInfoComponent } from './chess/signup-info/signup-info.component';
       }
     ])
   ],
-  declarations: [HomePage, ChessComponent,ChessmenSelectComponent, ChessmenAddComponent,SignupInfoComponent]
+  declarations: [HomePage, ChessComponent,ChessmenSelectComponent, ChessmenAddComponent,SignupInfoComponent],
+  providers : [ChessService]
 })
 export class HomePageModule {}
