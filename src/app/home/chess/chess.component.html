@@ -1,41 +1,41 @@
+<ion-spinner class="progress" *ngIf="progress" name="circles"></ion-spinner>
 <div [ngSwitch]="action">
-    <div *ngSwitchCase="'singup'">
+    <div *ngSwitchCase="'signup'">
         <div [ngSwitch]="view" class="container">
-            <ion-spinner class="progress" *ngIf="progress" name="circles"></ion-spinner>
-
-
-            <!-- signup -->
 
             <ng-container *ngSwitchCase="'signup_chessMenSelect'">
                 <app-chessmen-select (chessmenSelected)="onChessmenSelected($event)"></app-chessmen-select>
             </ng-container>
 
             <ng-container *ngSwitchCase="'signup_chessMenAddToBoard'">
-                <app-chessmen-add (chessmenAdded)="onChessmenAdded($event)" [selectedChessMen]="selectedChessmen"></app-chessmen-add>
+                <app-chessmen-add (chessmenAdded)="onChessmenAdded($event)" [selectedChessMen]="selectedChessmen">
+                </app-chessmen-add>
             </ng-container>
 
             <ng-container *ngSwitchCase="'signup_info'">
                 <app-signup-info (userInfo)="onUserInfo($event)"></app-signup-info>
             </ng-container>
+        </div>
+    </div>
+    <div *ngSwitchCase="'login'">
+        <div [ngSwitch]="view" class="container">
 
-            <!-- Login  -->
             <ng-container *ngSwitchCase="'login_info'">
-                <app-login-user-info (loginUserInfo)="onLoginUserInfo($event)" ></app-login-user-info >
+                <app-login-user-info (loginUserInfo)="onLoginUserInfo($event)"></app-login-user-info>
             </ng-container>
 
-            <ng-container *ngSwitchDefault>
-                <div class="logo">
-                    <img src="assets/logo.png">
-                </div>
-                <div class="actions">
-                    <button class="button" (click)="onAction('login')">Login</button>
-                    <button class="button" (click)="onAction('signup')">Sign Up</button>
-                </div>
-                
-                OUTPUT: <br>
-                {{singup | json}}
+            <ng-container *ngSwitchCase="'login_chessmenSequence'">
+                <app-chessmen-sequence (code)="onLoginCode($event)" [loginChess]="loginChessState"></app-chessmen-sequence>
             </ng-container>
         </div>
     </div>
-    <div *ngSwitchDefault>SING IN</div>
+    <ng-container *ngSwitchDefault>
+        <div class="logo">
+            <img src="assets/logo.png">
+        </div>
+        <div class="actions">
+            <button class="button" (click)="onAction('login')">Login</button>
+            <button class="button" (click)="onAction('signup')">Sign Up</button>
+        </div>
+    </ng-container>
 </div>

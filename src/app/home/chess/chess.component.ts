@@ -11,7 +11,7 @@ export class ChessComponent implements OnInit {
 
 
   @Input() public mode = Mode.FOUR
-  action = 'singup'
+  action = 'home'
   view = 'home'
   public pieces = Pieces
   public progress = false
@@ -35,8 +35,14 @@ export class ChessComponent implements OnInit {
     signup_info : 1,
     signup_chessMenSelect: 2,
     signup_chessMenAddToBoard: 3,
-    login_info: 4 
+    login_info: 4,
+    login_chessmenSequence: 5 
   }
+
+
+  // login state
+  loginChessState
+
 
   
 
@@ -79,7 +85,8 @@ export class ChessComponent implements OnInit {
       this.progress = false
       if(res.success){
         console.log("chessmen of user : ", res.body)
-        // this.onAction('home')
+        this.loginChessState = res.body[0]
+        this.onAction('login_chessmenSequence')
       }else {
         alert("user name is not found.")
       }
@@ -87,18 +94,31 @@ export class ChessComponent implements OnInit {
     
   }
 
+  onLoginCode($event){
+    console.log("LoginCode: ", $event)
+    this.view = 'login_otp'
+  }
+
   // might be moved to service 
 
-// taken
   onAction(action){
+    console.log("AC:", action)
     switch(action){
 
       case 'signup': {
+        console.log("LL")
+        this.action ='signup'
         this.view = 'signup_info'
         break;
       }
       case 'login': {
+        this.action ='login'
         this.view = 'login_info'
+        break;
+      }
+ 
+      case 'login_chessmenSequence': {
+        this.view = 'login_chessmenSequence'
         break;
       }
 
@@ -112,9 +132,9 @@ export class ChessComponent implements OnInit {
         break;
       }
 
-      
       default: {
-        this.view = 'home'
+        this.view = ''
+        this.action=''
         break;
       }
 
