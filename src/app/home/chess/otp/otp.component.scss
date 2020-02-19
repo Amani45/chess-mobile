@@ -1,0 +1,51 @@
+
+
+
+
+.title {
+    width: 100%;
+    text-align: left;
+    font-size: large;
+    font-weight: 600;
+    padding-bottom: 40px;
+    display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 50%;
+    align-items: center;
+}
+
+.row {
+
+    display: flex;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 50px;
+
+
+    .col {
+        flex: .5;
+    }
+
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    .button {
+        background-color: #ececec;
+width: 100px;
+height: 50px;
+border-radius: 3px;
+    }
+}

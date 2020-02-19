@@ -13,6 +13,8 @@ export class ChessComponent implements OnInit {
   @Input() public mode = Mode.FOUR
   action = 'home'
   view = 'home'
+  // action = 'login'
+  // view = 'login_otp'
   public pieces = Pieces
   public progress = false
 
@@ -25,6 +27,12 @@ export class ChessComponent implements OnInit {
     phone: 'XXXXXXX',
     chessSize: 4,
     chessCode : []
+  }
+
+  public login = {
+    userName : 'XXXXX',
+    sequenceCode : [],
+    otpCode : 0
   }
 
 
@@ -86,24 +94,62 @@ export class ChessComponent implements OnInit {
       if(res.success){
         console.log("chessmen of user : ", res.body)
         this.loginChessState = res.body[0]
+        this.login.userName = $event.userName
         this.onAction('login_chessmenSequence')
       }else {
         alert("user name is not found.")
       }
     })
-    
   }
 
-  onLoginCode($event){
-    console.log("LoginCode: ", $event)
-    this.view = 'login_otp'
+  onLoginChessCode($event){
+    console.log("onLoginChessCode: ", $event)
+    this.progress = true
+    this.login.sequenceCode = $event
+    this.chessService.validateUserSequence(this.login).subscribe( (res : any) => {
+      this.progress = false
+      if(res.success){
+        this.onAction('login_otp')
+      }else {
+        alert("Chess code is not correct!")
+
+      }
+    })
   }
+
+  onLoginOtpCode($event){
+    console.log("onLoginOtpCode: ", $event)
+    this.progress = true
+    this.login.otpCode = $event
+    this.chessService.validateUserOtp(this.login).subscribe( (res : any) => {
+      this.progress = false
+      if(res.success){
+        this.onAction('protected')
+      }else {
+        alert("OTP code is not correct!")
+      }
+    })
+  }
+
+  
 
   // might be moved to service 
 
   onAction(action){
     console.log("AC:", action)
     switch(action){
+      
+      case 'protected': {
+        this.action ='protected'
+        this.view = 'protected'
+        break;
+      }
+
+      case 'signup': {
+        this.action ='protected'
+        this.view = 'protected'
+        break;
+      }
 
       case 'signup': {
         console.log("LL")
@@ -119,6 +165,11 @@ export class ChessComponent implements OnInit {
  
       case 'login_chessmenSequence': {
         this.view = 'login_chessmenSequence'
+        break;
+      }
+
+      case 'login_otp' : {
+        this.view = "login_otp"
         break;
       }
 

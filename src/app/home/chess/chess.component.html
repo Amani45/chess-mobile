@@ -23,10 +23,18 @@
             <ng-container *ngSwitchCase="'login_info'">
                 <app-login-user-info (loginUserInfo)="onLoginUserInfo($event)"></app-login-user-info>
             </ng-container>
+            <ng-container *ngSwitchCase="'login_otp'">
+                <app-otp (loginOtpCode)="onLoginOtpCode($event)"></app-otp>
+            </ng-container>
 
             <ng-container *ngSwitchCase="'login_chessmenSequence'">
-                <app-chessmen-sequence (code)="onLoginCode($event)" [loginChess]="loginChessState"></app-chessmen-sequence>
+                <app-chessmen-sequence (code)="onLoginChessCode($event)" [loginChess]="loginChessState"></app-chessmen-sequence>
             </ng-container>
+        </div>
+    </div>
+    <div *ngSwitchCase="'protected'">
+        <div class="container">
+            You are authenticated :)
         </div>
     </div>
     <ng-container *ngSwitchDefault>
