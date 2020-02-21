@@ -1,18 +1,31 @@
 <ion-spinner class="progress" *ngIf="progress" name="circles"></ion-spinner>
 <div [ngSwitch]="action">
     <div *ngSwitchCase="'signup'">
-        <div [ngSwitch]="view" class="container">
 
+
+
+        <!-- singup -->
+
+        <div [ngSwitch]="view" class="container">
             <ng-container *ngSwitchCase="'signup_chessMenSelect'">
+                <div class="back-button" (click)="onAction('signup')">
+                    <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon> Back
+                </div>
                 <app-chessmen-select (chessmenSelected)="onChessmenSelected($event)"></app-chessmen-select>
             </ng-container>
 
             <ng-container *ngSwitchCase="'signup_chessMenAddToBoard'">
+                <div class="back-button" (click)="onAction('signup_chessMenSelect')">
+                    <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon> Back
+                </div>
                 <app-chessmen-add (chessmenAdded)="onChessmenAdded($event)" [selectedChessMen]="selectedChessmen">
                 </app-chessmen-add>
             </ng-container>
 
             <ng-container *ngSwitchCase="'signup_info'">
+                <div class="back-button" (click)="onAction('home')">
+                    <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon> Back
+                </div>
                 <app-signup-info (userInfo)="onUserInfo($event)"></app-signup-info>
             </ng-container>
         </div>
@@ -21,20 +34,34 @@
         <div [ngSwitch]="view" class="container">
 
             <ng-container *ngSwitchCase="'login_info'">
+                <div class="back-button" (click)="onAction('home')">
+                    <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon> Back
+                </div>
                 <app-login-user-info (loginUserInfo)="onLoginUserInfo($event)"></app-login-user-info>
             </ng-container>
             <ng-container *ngSwitchCase="'login_otp'">
+                <div class="back-button" (click)="onAction('login_chessmenSequence')">
+                    <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon> Back
+                </div>
+            
                 <app-otp (loginOtpCode)="onLoginOtpCode($event)"></app-otp>
             </ng-container>
 
             <ng-container *ngSwitchCase="'login_chessmenSequence'">
-                <app-chessmen-sequence (code)="onLoginChessCode($event)" [loginChess]="loginChessState"></app-chessmen-sequence>
+                <div class="back-button" (click)="onAction('login')">
+                    <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon> Back
+                </div>
+                <app-chessmen-sequence (code)="onLoginChessCode($event)" [loginChess]="loginChessState">
+                </app-chessmen-sequence>
             </ng-container>
         </div>
     </div>
     <div *ngSwitchCase="'protected'">
         <div class="container">
-            You are authenticated :)
+            <div>
+                You are authenticated :)
+            </div>
+            <button class="button" (click)="onAction('home')">Home</button>
         </div>
     </div>
     <ng-container *ngSwitchDefault>

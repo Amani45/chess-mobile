@@ -5,22 +5,46 @@
     <div class="piece">
         <div>Queen</div>
         <div class="piece-icon" [innerHTML]="pieces['queen']"></div>
-        <input type="number" [(ngModel)]="queen">
+        <!-- <input type="number" [(ngModel)]="queen"> -->
+        <select [(ngModel)]="queen">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
     </div>
     <div class="piece">
         <div>Bishop</div>
         <div class="piece-icon" [innerHTML]="pieces['bishop']"></div>
-        <input type="number" [(ngModel)]="bishop">
+        <!-- <input type="number" [(ngModel)]="bishop"> -->
+        <select [(ngModel)]="bishop">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
     </div>
     <div class="piece">
         <div>Knight</div>
         <div class="piece-icon" [innerHTML]="pieces['knight']"></div>
-        <input type="number" [(ngModel)]="knight">
+        <!-- <input type="number" [(ngModel)]="knight"> -->
+        <select [(ngModel)]="knight">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
     </div>
     <div class="piece">
         <div>Rook</div>
         <div class="piece-icon" [innerHTML]="pieces['rook']"></div>
-        <input type="number" [(ngModel)]="rook">
+        <!-- <input type="number" [(ngModel)]="rook"> -->
+        <select [(ngModel)]="rook">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
     </div>
 </div>
 <div class="actions">

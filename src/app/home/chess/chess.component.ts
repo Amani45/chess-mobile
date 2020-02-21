@@ -73,6 +73,7 @@ export class ChessComponent implements OnInit {
       this.progress = false
       console.log(res)
       if(res.success){
+        alert("You have been registered :)")
         this.onAction('home')
       }else {
         alert("Signup failed.")
@@ -146,13 +147,6 @@ export class ChessComponent implements OnInit {
       }
 
       case 'signup': {
-        this.action ='protected'
-        this.view = 'protected'
-        break;
-      }
-
-      case 'signup': {
-        console.log("LL")
         this.action ='signup'
         this.view = 'signup_info'
         break;
