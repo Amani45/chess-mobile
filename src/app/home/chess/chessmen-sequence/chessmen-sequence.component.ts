@@ -72,8 +72,10 @@ export class ChessmenSequenceComponent implements OnInit {
 
 
   onPieceSelect(i, j) {
-    this.boardState[i][j] = { order: this.selectChessmen, value: "", selected: true }
-    this.selectChessmen++
+    if(this.boardState[i][j].value != '&#9679;'){
+      this.boardState[i][j] = { order: this.selectChessmen, value: "", selected: true }
+      this.selectChessmen++
+    }
   }
 
   onPieceAdd(i, j) {
