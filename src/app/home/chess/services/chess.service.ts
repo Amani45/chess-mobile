@@ -25,6 +25,7 @@ export class ChessService {
   VALIDATE_USER_SEQUENCE = environment.url + "/users/validate/sequence"
   VALIDATE_USER_OTP = environment.url + "/users/validate/otp"
 
+  VALIDATE_USER_NAME = environment.url + "/users/validate"
 
 
 
@@ -46,6 +47,10 @@ export class ChessService {
 
   public getUserChessmen(userName): Observable<any>{
     return this.http.get(this.GET_USER_CHESSMEN +"/"+ userName)
+  }
+
+  public validateUserName(userName): Observable<any>{
+    return this.http.get(this.VALIDATE_USER_NAME +"/"+ userName)
   }
 
   

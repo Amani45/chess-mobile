@@ -82,10 +82,20 @@ export class ChessComponent implements OnInit {
   }
 
   onUserInfo($event){
-    console.log("USER_INFO: ", $event)
-    this.singup.userName = $event.userName
-    this.singup.phone = $event.phone
-    this.onAction('signup_chessMenSelect')
+    this.progress = true
+    this.chessService.validateUserName($event.userName).subscribe(res =>{
+      this.progress = false
+      if(!res.success){
+        console.log("USER_INFO: ", $event)
+        this.singup.userName = $event.userName
+        this.singup.phone = $event.phone
+        this.onAction('signup_chessMenSelect')
+      }else {
+        alert("User is already registred")
+      }
+
+    })
+ 
   }
 
   onLoginUserInfo($event){
