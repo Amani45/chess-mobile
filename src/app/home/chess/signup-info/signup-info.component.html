@@ -3,7 +3,7 @@
     <span class="col">User Name</span><input class="col" type="text" [(ngModel)]="userName" />
   </div>
   <div class='row'>
-    <span class="col">Phone Number</span><input class="col" type="text" [(ngModel)]="phone" />
+    <span class="col">Phone Number</span><input class="col" type="tel" pattern="[0-9]{3}" placeholder="+966XXXXXXX" [(ngModel)]="phone" />
   </div>
 </div>
 

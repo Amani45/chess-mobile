@@ -9,23 +9,24 @@ export class SignupInfoComponent implements OnInit {
 
 
   userName = ""
-  phone = "+9665"
+  phone = ""
 
   @Output() userInfo = new EventEmitter()
 
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
 
 
-  onNext(){
-    
-    if(this.userName.length == 0 || this.phone.length == 0){
-        alert("Please enter username and phone")
-    }else {
-      this.userInfo.emit({userName: this.userName, phone: this.phone})
+  onNext() {
+    if (this.userName.length == 0 || this.phone.length == 0) {
+      alert("Please enter username and phone")
+    } else if (!/^\+9665[0-9]{8}/.test(this.phone)) {
+      alert("Please enter valid phone")
+    } else {
+      this.userInfo.emit({ userName: this.userName, phone: this.phone })
     }
   }
 

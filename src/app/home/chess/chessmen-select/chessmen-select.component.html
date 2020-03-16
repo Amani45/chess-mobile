@@ -2,11 +2,20 @@
 
 <div class="selection">
 
+
+    <div style="text-align: center;" *ngIf="current>=3 && current<=8">Current selected chessmen :  {{current}}</div>
+    <div style="text-align: center;color:red" *ngIf="current>=9">Max chessmen to select {{max}}</div>
+    <div style="text-align: center;color:red" *ngIf="current<3">Min chessmen to select {{min}}</div>
+
+    <!-- <div style="text-align: center;" *ngIf="current<3">Max chessmen to select {{max}}</div> -->
+
+
+
     <div class="piece">
         <div>Queen</div>
         <div class="piece-icon" [innerHTML]="pieces['queen']"></div>
         <!-- <input type="number" [(ngModel)]="queen"> -->
-        <select [(ngModel)]="queen">
+        <select [(ngModel)]="queen" (change)="onChange('queen',queen)">
             <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -18,7 +27,7 @@
         <div>Bishop</div>
         <div class="piece-icon" [innerHTML]="pieces['bishop']"></div>
         <!-- <input type="number" [(ngModel)]="bishop"> -->
-        <select [(ngModel)]="bishop">
+        <select [(ngModel)]="bishop" (change)="onChange('bishop',bishop)" >
             <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -30,7 +39,7 @@
         <div>Knight</div>
         <div class="piece-icon" [innerHTML]="pieces['knight']"></div>
         <!-- <input type="number" [(ngModel)]="knight"> -->
-        <select [(ngModel)]="knight">
+        <select [(ngModel)]="knight" (change)="onChange('knight',knight)">
             <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -42,7 +51,7 @@
         <div>Rook</div>
         <div class="piece-icon" [innerHTML]="pieces['rook']"></div>
         <!-- <input type="number" [(ngModel)]="rook"> -->
-        <select [(ngModel)]="rook">
+        <select [(ngModel)]="rook" (change)="onChange('rook',rook)">
             <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -52,5 +61,5 @@
     </div>
 </div>
 <div class="actions">
-    <button class="button" (click)="onAction()">Next</button>
+    <button class="button" *ngIf="current>=3 && current<=8" (click)="onAction()">Next</button>
 </div>
