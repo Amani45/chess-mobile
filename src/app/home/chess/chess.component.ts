@@ -122,8 +122,7 @@ export class ChessComponent implements OnInit {
       if(res.success){
         this.onAction('login_otp')
       }else {
-        alert("Chess code is not correct!")
-
+        alert(res.message)
       }
     })
   }
