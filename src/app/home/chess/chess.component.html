@@ -14,6 +14,13 @@
                 <app-chessmen-select (chessmenSelected)="onChessmenSelected($event)"></app-chessmen-select>
             </ng-container>
 
+            <ng-container *ngSwitchCase="'signup_addSecreteObject'">
+                <div class="back-button" (click)="onAction('signup_chessMenAddToBoard')">
+                    <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon> Back
+                </div>
+                <app-secret-add (selectedSecret)="onSelectedSecrete($event)"></app-secret-add>
+            </ng-container>
+
             <ng-container *ngSwitchCase="'signup_chessMenAddToBoard'">
                 <div class="back-button" (click)="onAction('signup_chessMenSelect')">
                     <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon> Back

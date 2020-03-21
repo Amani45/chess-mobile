@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginUserInfoComponent } from './chess/login-user-info/login-user-info.component';
 import { ChessmenSequenceComponent } from './chess/chessmen-sequence/chessmen-sequence.component';
 import { OtpComponent } from './chess/otp/otp.component';
+import { SecretAddComponent } from './chess/secret-add/secret-add.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,7 @@ import { OtpComponent } from './chess/otp/otp.component';
       }
     ])
   ],
-  declarations: [HomePage, ChessComponent,ChessmenSelectComponent, ChessmenAddComponent,SignupInfoComponent, LoginUserInfoComponent, ChessmenSequenceComponent, OtpComponent],
+  declarations: [HomePage, ChessComponent,ChessmenSelectComponent, ChessmenAddComponent,SignupInfoComponent, LoginUserInfoComponent, ChessmenSequenceComponent, OtpComponent, SecretAddComponent],
   providers : [ChessService]
 })
 export class HomePageModule {}

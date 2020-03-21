@@ -26,7 +26,8 @@ export class ChessComponent implements OnInit {
     userName : 'XXXXX',
     phone: 'XXXXXXX',
     chessSize: 4,
-    chessCode : []
+    chessCode : [],
+    secret : 'None'
   }
 
   public login = {
@@ -43,8 +44,10 @@ export class ChessComponent implements OnInit {
     signup_info : 1,
     signup_chessMenSelect: 2,
     signup_chessMenAddToBoard: 3,
-    login_info: 4,
-    login_chessmenSequence: 5 
+    signup_addSecreteObject: 4,
+
+    login_info: 1,
+    login_chessmenSequence: 2 
   }
 
 
@@ -67,6 +70,24 @@ export class ChessComponent implements OnInit {
 
   onChessmenAdded($event){
     this.singup.chessCode = $event
+    this.onAction('signup_addSecreteObject')
+
+    //this.progress = true
+    // this.chessService.signupNewUser(this.singup).subscribe( (res : any) => {
+    //   console.log(res)
+    //   this.progress = false
+    //   console.log(res)
+    //   if(res.success){
+    //     alert("You have been registered :)")
+    //     this.onAction('home')
+    //   }else {
+    //     alert("Signup failed.")
+    //   }
+    // })
+  }
+
+  onSelectedSecrete($event){
+    this.singup.secret = $event
     this.progress = true
     this.chessService.signupNewUser(this.singup).subscribe( (res : any) => {
       console.log(res)
@@ -178,6 +199,11 @@ export class ChessComponent implements OnInit {
 
       case 'signup_chessMenSelect': {
         this.view = 'signup_chessMenSelect'
+        break;
+      }
+
+      case 'signup_addSecreteObject' :{
+        this.view = 'signup_addSecreteObject'
         break;
       }
 
