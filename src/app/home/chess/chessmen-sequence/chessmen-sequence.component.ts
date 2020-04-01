@@ -17,7 +17,7 @@ export class ChessmenSequenceComponent implements OnInit {
     this.boardState = Array(this.mode).fill('Row').map(x => Array(this.mode).fill({ value: '', selected: false }))
 
     login.chessCode.forEach(code => {
-      this.onPieceAdd(code.x, code.y)
+      this.onPieceAdd(code.x, code.y, code.isSecret)
     })
 
   }
@@ -62,7 +62,7 @@ export class ChessmenSequenceComponent implements OnInit {
       return row.map((col, j) => {
 
         if (col && col.selected) {
-          providedCode.push({ order: col.order, newMove: { x: i, y: j } })
+          providedCode.push({ order: col.order, newMove: { x: i, y: j }})
         }
       })
     })
@@ -78,8 +78,8 @@ export class ChessmenSequenceComponent implements OnInit {
     }
   }
 
-  onPieceAdd(i, j) {
-    this.boardState[i][j] = { value: '&#9679;', selected: false }
+  onPieceAdd(i, j, isSecret) {
+    this.boardState[i][j] = { value: '&#9679;', selected: false, isSecret : isSecret }
   }
 
 }

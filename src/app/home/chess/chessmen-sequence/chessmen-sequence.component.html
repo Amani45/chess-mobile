@@ -12,10 +12,9 @@
 <div class="board">
   <ng-container *ngFor="let row of boardState; let i = index">
     <div class="row" id="{{i}}">
-      <div class="cell" *ngFor="let col of boardState[i]; let j = index" id="{{i+'X'+j}}"  [ngClass]="{selected: boardState[i][j].selected}" (click)="onPieceSelect(i,j)">
+      <div class="cell" *ngFor="let col of boardState[i]; let j = index" id="{{i+'X'+j}}"  [ngClass]="{selected: boardState[i][j].selected, 'secret' : col.isSecret}" (click)="onPieceSelect(i,j)">
         <div [innerHTML]="col.value">
         </div>
-        <!-- <span class="order"> {{col.order}}</span> -->
       </div>
     </div>
   </ng-container>

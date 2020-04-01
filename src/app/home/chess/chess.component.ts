@@ -87,7 +87,7 @@ export class ChessComponent implements OnInit {
   }
 
   onSelectedSecrete($event){
-    this.singup.secret = $event
+    this.singup.secret = $event == 'None' ? null : $event
     this.progress = true
     this.chessService.signupNewUser(this.singup).subscribe( (res : any) => {
       console.log(res)
