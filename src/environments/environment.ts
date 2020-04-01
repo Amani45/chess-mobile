@@ -8,10 +8,10 @@ export const environment = {
   // ios
   //url : "http://localhost:3000/api"
   //android 
-  url : '10.0.2.2:3000/api'
+  //url : '10.0.2.2:3000/api'
 
   // home lan
-  //url : "http://192.168.100.30:3000/api"
+  url : "http://192.168.100.30:3000/api"
 
   // portal lan
   // url : "http://192.168.8.30:3000/api"
